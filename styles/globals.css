@@ -9,6 +9,7 @@ body {
   box-sizing: border-box;
 }
 
-.modalStyle .ant-modal-content{
-  background-color: #01579b;
-}
+.ant-modal-content {
+  background-color: #15202b!important;
+  border-radius: 10px;
+} 
