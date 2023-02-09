@@ -1,6 +1,29 @@
 import styles from "../styles/Login.module.css";
+import { useEffect, useState } from 'react';
+import { Button, Modal } from 'antd';
+import SignIn from "../components/SignIn";
+
+
 
 function Login() {
+
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState('Content of the modal');
+  const showModal = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+      setOpen(false);
+      setConfirmLoading(false);
+
+  };
+  const handleCancel = () => {
+    console.log('Clicked cancel button');
+    setOpen(false);
+  };
+
+
   return (
     <div className={styles.home}>
       <main>
@@ -20,7 +43,15 @@ function Login() {
         </div>
         <div>
           <h4 className={styles.join}>Join Hackatweet today.</h4>
-          <button className={styles.buttonSignUp}>Sign Up</button>
+          <button className={styles.buttonSignUp} onClick={showModal}>Sign Up</button>
+
+          <Modal
+          bodyStyle={{"border": "solid 2px red", "padding": 0}}
+          footer={null}
+          open={open}
+          onCancel={handleCancel}
+          ><SignIn/></Modal>
+
         </div>
         <div>
           <h6 className={styles.already}>Already have an account?</h6>
