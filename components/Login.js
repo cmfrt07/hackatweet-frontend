@@ -46,7 +46,6 @@ function Login() {
           <button className={styles.buttonSignUp} onClick={showModal}>Sign Up</button>
 
           <Modal
-          bodyStyle={{"border": "solid 2px red", "padding": 0}}
           footer={null}
           open={open}
           onCancel={handleCancel}
