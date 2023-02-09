@@ -1,0 +1,60 @@
+.main{
+  padding: 0 20px 0 20px;
+  border-bottom: 2px solid #2f3336;
+}
+
+.main h1{
+  color: white;
+  font-size:24px;
+}
+
+.tweetBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tweetBox input{
+  color: white;
+  font-size: 18px;
+  padding: 20px 0;
+  width: 80%;
+  background-color: transparent;
+  border-bottom: 2px solid #2f3336!important;
+  border-color: transparent;
+  margin-bottom: 20px;
+}
+
+.tweetBox input::placeholder{
+  color: #6c7989;
+  font-size: 18px;
+}
+
+.tweetBox input:focus {
+  outline: none;
+}
+
+.charLength{
+  display: flex;
+}
+
+.btnTweet{
+  cursor: pointer;
+  margin: 10px 0 10px 20px;
+  border: none;
+  color: white;
+  background-color: #3690ed;
+  padding: 0px 40px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.charLength{
+  margin-bottom: 30px;
+  margin-left: auto; 
+  margin-right: 70px;
+}
+
+.charLength p{
+  color: white;
+}
