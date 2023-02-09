@@ -1,0 +1,28 @@
+.main{
+  padding: 20px;
+}
+
+.main h2{
+  color: white;
+  margin: 0;
+}
+
+.trend{
+  border-radius: 8px;
+  background-color: #1b232c;
+}
+
+.trendBox{
+  padding: 10px 0 10px 10px;
+  margin-top: 20px;
+}
+
+.trendBox h4{
+  margin:  5px 0;
+  color: white;
+}
+
+.trendBox p{
+  color: #6c7989;
+  margin:  5px 0 5px 0;
+}
