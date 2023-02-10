@@ -17,11 +17,9 @@ function LastTweets(props) {
     fetch('http://localhost:3000/getTweet')
     .then(response => response.json())
     .then(data => {
-      setTweetData(data.data)
+      setTweetData((data.data).reverse())
     });
   }, [tweetList]);
-
-  
 
 
   const createTweet = tweetData.map((data, i) => {

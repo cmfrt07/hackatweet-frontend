@@ -11,9 +11,9 @@ function NewTweet(props) {
   //console.log(tweetList);
   const user = useSelector((state) => state.user.value);
   //console.log(user)
+  const [deleteTweet, setDeleteTweet] = useState(false)
 
-  let usernameTwit = "hello";
-  let firstnameTwit = "hello";
+
 
   const handleLikeTweet = () => {
     setHeartcount(heartCount + 1);
@@ -23,8 +23,26 @@ function NewTweet(props) {
     }
   };
 
+
+
+
+  let style = {};
+
+  const HandleClickDelete = () => {
+    setDeleteTweet(true)
+  }
+  if (deleteTweet){
+    style={"display": "none"}
+  }
+  
+
+  let trashcan;
+  if(user.username == props.username){
+    trashcan = <FontAwesomeIcon classname={styles.iconBtn} onClick={() => HandleClickDelete()} style={{ "color": "white", "margin-right": "8px"}} icon={faTrashCan} />
+  }
+
   return (
-    <div>
+    <div style={style}>
       <main className={styles.main}>
         <div className={styles.tweetCreator}>
           <img src="user.png" className={styles.userImg} />
@@ -47,6 +65,7 @@ function NewTweet(props) {
             style={{ color: "white", "margin-right": "8px" }}
             icon={faTrashCan}
           />
+          {trashcan}
         </div>
       </main>
     </div>
