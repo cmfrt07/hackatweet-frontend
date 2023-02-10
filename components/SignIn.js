@@ -74,16 +74,12 @@ function Signin() {
           </div>
         </div>
         <div>
-          {/* {user.token( */}
-          <Link href="/Home">
-            <button
-              className={styles.SignInBtn}
-              onClick={() => handleConnection()}
-            >
-              Sign in
-            </button>
-          </Link>
-          {/* )} */}
+          <button
+            className={styles.SignInBtn}
+            onClick={() => handleConnection()}
+          >
+            Sign in
+          </button>
         </div>
       </main>
     </div>
