@@ -20,7 +20,6 @@ function Signin() {
       body: JSON.stringify({
         username: signInUsername,
         password: signInPassword,
-        token: data.token,
       }),
     })
       .then((response) => response.json())
