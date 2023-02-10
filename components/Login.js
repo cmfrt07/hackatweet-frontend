@@ -68,17 +68,12 @@ function Login() {
           <button className={styles.buttonSignIn} onClick={showModal2}>
             Sign In
           </button>
-          <Modal
-            bodyStyle={{ border: "solid 2px red", padding: 0 }}
-            footer={null}
-            open={open2}
-            onCancel={handleCancel2}
-          >
+          <Modal footer={null} open={open2} onCancel={handleCancel2}>
             <SignIn />
           </Modal>
         </div>
       </container>
-</div>
+    </div>
   );
 }
 
