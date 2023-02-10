@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login } from "../reducers/user";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function SignUp() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   console.log(user);
@@ -39,20 +41,11 @@ function SignUp() {
           setSignUpUsername("");
           setSignUpPassword("");
           setIsModalVisible(false);
+
+          router.push("/Home");
         }
       });
   };
-
-  let userSection;
-  if (user.token) {
-    userSection = (
-      <Link href="/Home">
-        <button className={styles.SignUpBtn} onClick={() => handleRegister()}>
-          Sign up
-        </button>
-      </Link>
-    );
-  }
 
   return (
     <div>
@@ -96,16 +89,10 @@ function SignUp() {
         </div>
 
         <div>
-          {/* {user.token( */}
-          <Link href="/Home">
-            <button
-              className={styles.SignUpBtn}
-              onClick={() => handleRegister()}
-            >
-              Sign up
-            </button>
-          </Link>
-          {/* )} */}
+          <button
+            className={styles.SignUpBtn}
+            onClick={() => handleRegister()}
+          ></button>
         </div>
       </main>
     </div>

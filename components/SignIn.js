@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login } from "../reducers/user";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Signin() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   console.log(user);
@@ -36,6 +38,8 @@ function Signin() {
           setSignInUsername("");
           setSignInPassword("");
           setIsModalVisible(false);
+
+          router.push("/Home");
         }
       });
   }
