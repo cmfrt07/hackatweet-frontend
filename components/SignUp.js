@@ -1,19 +1,21 @@
 import styles from "../styles/signUp.module.css";
-
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { login } from "../reducers/user";
+import Link from "next/link";
 
 function SignUp() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   console.log(user);
 
+  const [IsModalVisible, setIsModalVisible] = useState("");
   const [signUpFirstname, setSignUpFirstname] = useState("");
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/users/signup", {
+    fetch("http://localhost:3000/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -37,7 +39,7 @@ function SignUp() {
           setSignUpPassword("");
           setIsModalVisible(false);
         }
-        window.location.assign("Home.js");
+        window.location.assign("/Home");
       });
   };
 
@@ -51,34 +53,42 @@ function SignUp() {
           <h1>Create your Hackatweet account</h1>
         </div>
         <div className={styles.button}>
-          <button
-            className={styles.firestnameBtn}
+          <input
+            type="text"
+            placeholder="Firstname"
+            id="signUpFirstname"
             onChange={(e) => setSignUpFirstname(e.target.value)}
             value={signUpFirstname}
-          >
-            Firstname
-          </button>
-          <button
-            className={styles.UsernameBtn}
-            onChange={(e) => setSignInUsername(e.target.value)}
-            value={signInUsername}
-          >
-            Username
-          </button>
-          <button
-            className={styles.PassewordBtn}
-            onChange={(e) => setSignInPassword(e.target.value)}
-            value={signInPassword}
+          />
+          <input
+            type="text"
+            placeholder="Username"
+            id="signUpUsername"
+            onChange={(e) => setSignUpUsername(e.target.value)}
+            value={signUpUsername}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            id="signUpPassword"
+            onChange={(e) => setSignUpPassword(e.target.value)}
+            value={signUpPassword}
           />
         </div>
         <div>
-          <button className={styles.SignUpBtn} onClick={() => handleRegister()}>
-            Sign up
-          </button>
+          <Link href="/Home">
+            <button
+              className={styles.SignUpBtn}
+              onClick={() => handleRegister()}
+            >
+              Sign up
+            </button>
+          </Link>
         </div>
       </main>
     </div>
   );
 }
 
-export default SignUp();
+export default SignUp;

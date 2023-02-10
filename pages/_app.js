@@ -1,13 +1,14 @@
-import '../styles/globals.css';
-import Head from 'next/head';
+import "../styles/globals.css";
+import Head from "next/head";
 
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import tweet from '../reducers/tweet';
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import tweet from "../reducers/tweet";
+import user from "../reducers/user";
 
 const store = configureStore({
-    reducer: { tweet },
-  });
+  reducer: { tweet, user },
+});
 
 function App({ Component, pageProps }) {
   return (

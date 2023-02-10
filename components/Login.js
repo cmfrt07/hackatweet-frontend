@@ -1,28 +1,39 @@
 import styles from "../styles/Login.module.css";
-import { useEffect, useState } from 'react';
-import { Button, Modal } from 'antd';
+import { useEffect, useState } from "react";
+import { Button, Modal } from "antd";
 import SignIn from "../components/SignIn";
-
-
+import SignUp from "../components/SignUp";
 
 function Login() {
-
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState('Content of the modal');
+  // const [confirmLoading, setConfirmLoading] = useState(false);
+  // const [modalText, setModalText] = useState("Content of the modal");
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = () => {
-      setOpen(false);
-      setConfirmLoading(false);
-
-  };
+  // const handleOk = () => {
+  //   setOpen(false);
+  //   setConfirmLoading(false);
+  // };
   const handleCancel = () => {
-    console.log('Clicked cancel button');
+    console.log("Clicked cancel button");
     setOpen(false);
   };
 
+  const [open2, setOpen2] = useState(false);
+  // const [confirmLoading, setConfirmLoading] = useState(false);
+  // const [modalText, setModalText] = useState("Content of the modal");
+  const showModal2 = () => {
+    setOpen(true);
+  };
+  // const handleOk = () => {
+  //   setOpen(false);
+  //   setConfirmLoading(false);
+  // };
+  const handleCancel2 = () => {
+    console.log("Clicked cancel button");
+    setOpen(false);
+  };
 
   return (
     <div className={styles.home}>
@@ -43,18 +54,28 @@ function Login() {
         </div>
         <div>
           <h4 className={styles.join}>Join Hackatweet today.</h4>
-          <button className={styles.buttonSignUp} onClick={showModal}>Sign Up</button>
+          <button className={styles.buttonSignUp} onClick={showModal}>
+            Sign Up
+          </button>
 
-          <Modal
-          footer={null}
-          open={open}
-          onCancel={handleCancel}
-          ><SignIn/></Modal>
-
+          <Modal footer={null} open={open} onCancel={handleCancel}>
+            <SignIn />
+          </Modal>
         </div>
         <div>
           <h6 className={styles.already}>Already have an account?</h6>
-          <button className={styles.buttonSignIn}>Sign In</button>
+          <button className={styles.buttonSignIn} onClick={showModal2}>
+            Sign In
+          </button>
+          <Modal
+            bodyStyle={{ border: "solid 2px red", padding: 0 }}
+            footer={null}
+            open={open2}
+            onCancel={handleCancel2}
+          >
+            {" "}
+            <SignIn />
+          </Modal>
         </div>
       </container>
     </div>
