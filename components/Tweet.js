@@ -8,7 +8,7 @@ function Tweets() {
   const dispatch = useDispatch();
   const[str, setStr] = useState('')
   const tweetArray = useSelector((state) => state.tweet.value);
-  console.log(tweetArray)
+
 
   const handleCreateTweet = () => {
     console.log("hello")
