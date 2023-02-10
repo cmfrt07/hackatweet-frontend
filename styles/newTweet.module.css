@@ -1,0 +1,50 @@
+
+.main{
+  border-bottom: 2px solid #2f3336;
+}
+
+.userImg{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.tweetCreator{
+  display: flex;
+  align-items: center;
+  margin: 20px 20px 10px 20px;
+}
+
+.tweetCreator h3{
+  margin: 0px 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.tweetCreator span{
+  margin: 0px 1px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #6c7989;
+}
+
+.tweetContent{
+  margin: 15px 20px 10px 40px;
+  color: white;
+}
+
+.tweetContent a{
+  cursor: pointer;
+  color: #3690ed;
+}
+
+.icons{
+  display: flex;
+  align-items: center;
+  margin: 20px 0 25px 40px; 
+  color: white;
+}
+
+.icons span{
+  margin-right: 10px;
+}
