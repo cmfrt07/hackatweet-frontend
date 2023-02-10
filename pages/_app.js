@@ -2,21 +2,35 @@ import "../styles/globals.css";
 import Head from "next/head";
 
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import tweet from "../reducers/tweet";
 import user from "../reducers/user";
 
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import storage from "redux-persist/lib/storage";
+
+const reducers = combineReducers({ user, tweet });
+
+const persistConfig = { key: "hackatweet", storage };
+
 const store = configureStore({
-  reducer: { tweet, user },
+  reducer: persistReducer(persistConfig, reducers),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
+
+const persistor = persistStore(store);
 
 function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <Head>
-        <title>Next.js App</title>
-      </Head>
-      <Component {...pageProps} />
+      <PersistGate persistor={persistor}>
+        <Head>
+          <title>Next.js App</title>
+        </Head>
+        <Component {...pageProps} />
+      </PersistGate>
     </Provider>
   );
 }

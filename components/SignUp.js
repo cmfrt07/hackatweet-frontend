@@ -15,7 +15,7 @@ function SignUp() {
   const [signUpPassword, setSignUpPassword] = useState("");
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/user/signup", {
+    fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -30,6 +30,7 @@ function SignUp() {
           dispatch(
             login({
               firstname: signUpFirstname,
+              password: signUpPassword,
               username: signUpUsername,
               token: data.token,
             })
@@ -39,9 +40,19 @@ function SignUp() {
           setSignUpPassword("");
           setIsModalVisible(false);
         }
-        window.location.assign("/Home");
       });
   };
+
+  let userSection;
+  if (user.token) {
+    userSection = (
+      <Link href="/Home">
+        <button className={styles.SignUpBtn} onClick={() => handleRegister()}>
+          Sign up
+        </button>
+      </Link>
+    );
+  }
 
   return (
     <div>
@@ -52,23 +63,30 @@ function SignUp() {
         <div className={styles.text}>
           <h1>Create your Hackatweet account</h1>
         </div>
-        <div className={styles.button}>
+
+        <div>
           <input
+            className={styles.input}
             type="text"
             placeholder="Firstname"
             id="signUpFirstname"
             onChange={(e) => setSignUpFirstname(e.target.value)}
             value={signUpFirstname}
           />
+        </div>
+        <div>
           <input
+            className={styles.input}
             type="text"
             placeholder="Username"
             id="signUpUsername"
             onChange={(e) => setSignUpUsername(e.target.value)}
             value={signUpUsername}
           />
-
+        </div>
+        <div>
           <input
+            className={styles.input}
             type="password"
             placeholder="Password"
             id="signUpPassword"
@@ -76,7 +94,9 @@ function SignUp() {
             value={signUpPassword}
           />
         </div>
+
         <div>
+          {/* {user.token( */}
           <Link href="/Home">
             <button
               className={styles.SignUpBtn}
@@ -85,6 +105,7 @@ function SignUp() {
               Sign up
             </button>
           </Link>
+          {/* )} */}
         </div>
       </main>
     </div>
