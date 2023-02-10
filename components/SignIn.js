@@ -25,12 +25,18 @@ function Signin() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
-          dispatch(login({ username: signInUsername, token: data.token }));
+          dispatch(
+            login({
+              firstname: data.firstname,
+              password: signInPassword,
+              username: signInUsername,
+              token: data.token,
+            })
+          );
           setSignInUsername("");
           setSignInPassword("");
           setIsModalVisible(false);
         }
-        window.location.assign("/Home");
       });
   }
 
@@ -43,23 +49,28 @@ function Signin() {
         <div className={styles.text}>
           <h1>Connect to Hackatweet</h1>
         </div>
-        <div className={styles.button}>
-          <input
-            type="text"
-            placeholder="Username"
-            id="signInUsername"
-            onChange={(e) => setSignInUsername(e.target.value)}
-            value={signInUsername}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            id="signInPassword"
-            onChange={(e) => setSignInPassword(e.target.value)}
-            value={signInPassword}
-          />
+        <div>
+          <div className={styles.button}>
+            <input
+              type="text"
+              placeholder="Username"
+              id="signInUsername"
+              onChange={(e) => setSignInUsername(e.target.value)}
+              value={signInUsername}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              id="signInPassword"
+              onChange={(e) => setSignInPassword(e.target.value)}
+              value={signInPassword}
+            />
+          </div>
         </div>
         <div>
+          {/* {user.token( /}
           <Link href="/Home">
             <button
               className={styles.SignInBtn}
@@ -68,6 +79,7 @@ function Signin() {
               Sign in
             </button>
           </Link>
+          {/ )} */}
         </div>
       </main>
     </div>

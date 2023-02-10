@@ -2,8 +2,11 @@ import styles from '../styles/Home.module.css';
 import LastTweets from './LastTweets';
 import Trends from './Trends';
 import Tweet from './Tweet';
+import { useDispatch, useSelector } from "react-redux";
 
 function Home() {
+  const user = useSelector((state) => state.user.value);
+
   return (
     <>
       <main className={styles.main}>
@@ -13,8 +16,8 @@ function Home() {
             <div className={styles.userBox}>
               <img className={styles.userImg} src="user.png"></img>
                 <div className={styles.user}>
-                  <h2>John</h2>
-                  <p>@JohnCena</p>
+                  <h2>{user.firstname}</h2>
+                  <p>@{user.username}</p>
                 </div>
             </div>
             <button className={styles.logoutBtn}>Logout</button>

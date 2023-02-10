@@ -15,7 +15,7 @@ function SignUp() {
   const [signUpPassword, setSignUpPassword] = useState("");
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/user/signup", {
+    fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -29,8 +29,9 @@ function SignUp() {
         if (data.result) {
           dispatch(
             login({
-              firstname: signUpFirstname,
-              username: signUpUsername,
+              firstname: data.firstname,
+              password: signUpUsername,
+              username: signUpPassword,
               token: data.token,
             })
           );
@@ -39,7 +40,18 @@ function SignUp() {
           setSignUpPassword("");
           setIsModalVisible(false);
         }
-        window.location.assign("/Home");
+        // let userSection;
+        // if (user.token) {
+        //   userSection = (
+        //     <div className={styles.logoutSection}>
+        //       <p>Welcome {user.username} / </p>
+        //       <button onClick={() => handleLogout()}>Logout</button>
+        //       <FontAwesomeIcon
+        //         onClick={handleRemoveHiddenClick}
+        //         className={styles.userSection}
+        //         icon={faEye}
+        //       />
+        //     </div>
       });
   };
 
@@ -52,42 +64,52 @@ function SignUp() {
         <div className={styles.text}>
           <h1>Create your Hackatweet account</h1>
         </div>
-        <div className={styles.button}>
-          <input
-            type="text"
-            placeholder="Firstname"
-            id="signUpFirstname"
-            onChange={(e) => setSignUpFirstname(e.target.value)}
-            value={signUpFirstname}
-          />
-          <input
-            type="text"
-            placeholder="Username"
-            id="signUpUsername"
-            onChange={(e) => setSignUpUsername(e.target.value)}
-            value={signUpUsername}
-          />
 
-          <input
-            type="password"
-            placeholder="Password"
-            id="signUpPassword"
-            onChange={(e) => setSignUpPassword(e.target.value)}
-            value={signUpPassword}
-          />
-        </div>
-        <div>
-          <Link href="/Home">
-            <button
-              className={styles.SignUpBtn}
-              onClick={() => handleRegister()}
-            >
-              Sign up
-            </button>
-          </Link>
-        </div>
-      </main>
+    <div>
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="Firstname"
+        id="signUpFirstname"
+        onChange={(e) => setSignUpFirstname(e.target.value)}
+        value={signUpFirstname}
+      />
     </div>
+    <div>
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="Username"
+        id="signUpUsername"
+        onChange={(e) => setSignUpUsername(e.target.value)}
+        value={signUpUsername}
+      />
+    </div>
+    <div>
+      <input
+        className={styles.input}
+        type="password"
+        placeholder="Password"
+        id="signUpPassword"
+        onChange={(e) => setSignUpPassword(e.target.value)}
+        value={signUpPassword}
+      />
+    </div>
+
+    <div>
+      {/* {user.token( */}
+      <Link href="/home">
+        <button
+          className={styles.SignUpBtn}
+          onClick={() => handleRegister()}
+        >
+          Sign up
+        </button>
+      </Link>
+      {/* )} */}
+    </div>
+  </main>
+</div>
   );
 }
 

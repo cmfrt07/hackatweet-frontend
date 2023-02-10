@@ -6,6 +6,7 @@ import SignUp from "../components/SignUp";
 
 function Login() {
   const [open, setOpen] = useState(false);
+
   // const [confirmLoading, setConfirmLoading] = useState(false);
   // const [modalText, setModalText] = useState("Content of the modal");
   const showModal = () => {
@@ -24,7 +25,7 @@ function Login() {
   // const [confirmLoading, setConfirmLoading] = useState(false);
   // const [modalText, setModalText] = useState("Content of the modal");
   const showModal2 = () => {
-    setOpen(true);
+    setOpen2(true);
   };
   // const handleOk = () => {
   //   setOpen(false);
@@ -32,7 +33,7 @@ function Login() {
   // };
   const handleCancel2 = () => {
     console.log("Clicked cancel button");
-    setOpen(false);
+    setOpen2(false);
   };
 
   return (
@@ -58,27 +59,26 @@ function Login() {
             Sign Up
           </button>
 
-          <Modal footer={null} open={open} onCancel={handleCancel}>
-            <SignIn />
-          </Modal>
-        </div>
-        <div>
-          <h6 className={styles.already}>Already have an account?</h6>
-          <button className={styles.buttonSignIn} onClick={showModal2}>
-            Sign In
-          </button>
-          <Modal
-            bodyStyle={{ border: "solid 2px red", padding: 0 }}
-            footer={null}
-            open={open2}
-            onCancel={handleCancel2}
-          >
-            {" "}
-            <SignIn />
-          </Modal>
-        </div>
-      </container>
+      <Modal footer={null} open={open} onCancel={handleCancel}>
+        <SignUp />
+      </Modal>
     </div>
+    <div>
+      <h6 className={styles.already}>Already have an account?</h6>
+      <button className={styles.buttonSignIn} onClick={showModal2}>
+        Sign In
+      </button>
+      <Modal
+        bodyStyle={{ border: "solid 2px red", padding: 0 }}
+        footer={null}
+        open={open2}
+        onCancel={handleCancel2}
+      >
+        <SignIn />
+      </Modal>
+    </div>
+  </container>
+</div>
   );
 }
 

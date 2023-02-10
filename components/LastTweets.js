@@ -8,15 +8,10 @@ import NewTweet from './NewTweet';
 
 
 function LastTweets(props) {
-  const tweetLength = useSelector((state) => state.tweet.length);
+  const user = useSelector((state) => state.user.value);
+
   const tweetList = useSelector((state) => state.tweet.value);
-  //console.log(tweetLength)
-
-  
   const [tweetData, setTweetData] = useState([])
-  console.log(tweetData.reverse())
-
-
 
   useEffect(() => {
     fetch('http://localhost:3000/getTweet')
@@ -24,7 +19,8 @@ function LastTweets(props) {
     .then(data => {
       setTweetData(data.data)
     });
-  }, [tweetData]);
+  }, [tweetList]);
+
   
 
 
