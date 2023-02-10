@@ -78,7 +78,7 @@ function Login() {
           </Modal>
         </div>
       </container>
-    </div>
+</div>
   );
 }
 

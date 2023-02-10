@@ -8,6 +8,10 @@ function Tweets() {
   const dispatch = useDispatch();
   const[str, setStr] = useState('')
   const tweetArray = useSelector((state) => state.tweet.value);
+  const user = useSelector((state) => state.user.value);
+  const tweetUsername = user.username;
+  const tweetFirstname = user.firstname;
+
 
 
   const handleCreateTweet = () => {
@@ -15,7 +19,7 @@ function Tweets() {
     fetch('http://localhost:3000/tweet', {
       method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ content: str}),
+			body: JSON.stringify({ content: str, username: tweetUsername, firstname: tweetFirstname}),
     }).then(response => response.json())
     .then(data => {
       if(data.result) {

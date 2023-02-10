@@ -31,9 +31,9 @@ function SignUp() {
         if (data.result) {
           dispatch(
             login({
-              firstname: signUpFirstname,
-              password: signUpPassword,
-              username: signUpUsername,
+              firstname: data.firstname,
+              password: signUpUsername,
+              username: signUpPassword,
               token: data.token,
             })
           );
@@ -95,7 +95,8 @@ function SignUp() {
           ></button>
         </div>
       </main>
-    </div>
+
+</div>
   );
 }
 

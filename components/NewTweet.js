@@ -8,16 +8,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function NewTweet(props) {
   const tweetList = useSelector((state) => state.tweet.value);
-  console.log(tweetList);
+  //console.log(tweetList);
+  const user = useSelector((state) => state.user.value);
+  //console.log(user)
 
-
+  let usernameTwit = "hello"
+  let firstnameTwit = "hello"
 
   return (
     <div>
       <main className={styles.main}>
         <div className={styles.tweetCreator}>
           <img src="user.png" className={styles.userImg}/>
-          <h3>John<span>@JohnCena . a few seconds</span></h3>
+          <h3>{props.username}<span>@{props.firstname} . a few seconds</span></h3>
         </div>
         <p className={styles.tweetContent}>{props.content}</p>
         <div className={styles.icons}>
